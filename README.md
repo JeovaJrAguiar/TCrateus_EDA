@@ -41,23 +41,23 @@ e redimensionamento realizado com taxa de ocupação de 75%;
 A fim de atender a todos os requisitos e características apresentados.
 
 #
-###Informações Importantes
+### Informações Importantes
 
-Objetivo: Esta atividade possui como objetivo estimular a análise de problemas e a criatividade
+**Objetivo**: Esta atividade possui como objetivo estimular a análise de problemas e a criatividade
 da aplicação dos recursos abordados na disciplina de Estrutura de Dados Avançada.
 
-Estruturas de uso: Deverão ser aplicados, para a resolução dessa atividade as estruturas:
+**Estruturas de uso**: Deverão ser aplicados, para a resolução dessa atividade as estruturas:
 Tabelas Hash e AVL. Todas as estruturas utilizadas na implementação deverão ser construídas,
 ou seja, não devem ser utilizados APIs, bibliotecas ou módulos construídos por terceiros.
 
-Desenvolvimento: Fica optativo a realização da atividade de forma individual ou em dupla.
+**Desenvolvimento**: Fica optativo a realização da atividade de forma individual ou em dupla.
 Sendo também optativa a escolha da linguagem de programação utilizada para plataforma
 desktop.
 
-Entrega: A atividade inicia-se dia 20/04/2022 com entrega final (Via SIGAA até às 17h30min) e
+**Entrega**: A atividade inicia-se dia 20/04/2022 com entrega final (Via SIGAA até às 17h30min) e
 apresentação no dia 02/05/2022 em aula.
 
-Formato de entrega: .zip ou .rar. Para o envio da tarefa no SIGAA, as equipes deverão incluir o
+**Formato de entrega**: .zip ou .rar. Para o envio da tarefa no SIGAA, as equipes deverão incluir o
 código fonte produzido. A apresentação ocorrerá em sala de aula/laboratório com tempo de
 5min a 15min, explicando todo o trabalho desenvolvido e executando todos as funcionalidades
 da implementação construída. O não envio ou apresentação acarretará a atribuição de nota zero
