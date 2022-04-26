@@ -61,4 +61,4 @@ apresentação no dia 02/05/2022 em aula.
 código fonte produzido. A apresentação ocorrerá em sala de aula/laboratório com tempo de
 5min a 15min, explicando todo o trabalho desenvolvido e executando todos as funcionalidades
 da implementação construída. O não envio ou apresentação acarretará a atribuição de nota zero
-à atividade.
+à atividade
