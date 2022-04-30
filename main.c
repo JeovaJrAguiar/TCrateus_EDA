@@ -1,14 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "lib.h"
 
 int main(void) {
-	int op, codigo;
-	char novoNome[30];
+	int op=0, codigoC=0, codigoS=0, hash=0;
+	char novoNome[30], novaDescricao[30];
 	TnoCliente dadoCliente;
 	TnoCliente *dadosCliente = NULL;
 	TLista L;
 	TdadosSetor dadoSetor;
 	criar(&L);
-	int hash;
 	do{    
     //Exibir menu
         system("cls");
@@ -33,6 +34,7 @@ int main(void) {
 					fgets(dadoSetor.descricao, 30, stdin);
 	                
 	                hash = hashing(dadoSetor.chave);
+	                
 	                inserirSetor(&L,hash, dadoSetor);
 					break;
 				}
@@ -67,11 +69,21 @@ int main(void) {
 				}
 				case 5:{
 					printf("Digite o Codigo do Cliente: ");
-					scanf("%d", &codigo);
+					scanf("%d", &codigoC);
 					printf("Digite o novo nome do responsavel: ");
 					fflush(stdin);
 					fgets(novoNome, 30, stdin);
-					updateNomeResponsavelCliente(dadosCliente, novoNome, codigo );
+					updateNomeResponsavelCliente(dadosCliente, novoNome, codigoC );
+					break;
+				}
+				case 6:{
+					printf("Digite o Codigo do Setor: ");
+					scanf("%d", &codigoS);
+					printf("Digite a nova Descricao do Setor: ");
+					fflush(stdin);
+					fgets(novaDescricao, 30, stdin);
+					
+					updateDescricaoSetor(&L, codigoS, novaDescricao);
 					break;
 				}
         	// Outra opção nao oferecida

@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h>
 #include "lib.h"
 
@@ -5,25 +6,30 @@
 int criar(TLista *L){
 	int i=0;
 	for(i=0;i<MAX;i++)
-		L->dadoSetor[i]= NULL;
+		L->dadosArray[i]= NULL;
 	L->n = 0;
 	return 1;	
 }
 
-int inserirSetor(TLista *L, int hash, TdadosSetor dadoSetor){
+void inserirSetor(TLista *L, int hash, TdadosSetor dadoSetor){
+	printf("oi\n");
 	Tno novo;
 	novo = (Tno*) malloc(sizeof(Tno));
+	printf("oi2\n");
 	novo->dadoSetor = dadoSetor;
-	if(L->dadoSetor[hash]==NULL){
-		L->dadoSetor[hash] = novo;
+	printf("oi3\n");
+	if(L->dadosArray[hash]==NULL){
+		printf("oi4\n");
+		L->dadosArray[hash] = novo;
 		novo->proximo = NULL;
 	}
 	else{
-		novo->proximo = L->dadoSetor[hash];
-		L->dadoSetor[hash] = novo;
+		novo->proximo = L->dadosArray[hash];
+		L->dadosArray[hash] = novo;
 	}
+	printf("oi5\n");
 	L->n+=1;
-	return 1;
+	
 }
 
 void exibir(TLista L){
@@ -31,9 +37,9 @@ void exibir(TLista L){
 	Tno aux;
 	if(L.n!=0){
 		for(i=0;i<MAX;i++){
-			if(L.dadoSetor[i] != NULL){
+			if(L.dadosArray[i] != NULL){
 				printf("---------indice %d---------\n", i);
-				 aux = 	L.dadoSetor[i];
+				 aux = 	L.dadosArray[i];
 				 while(aux !=NULL){
 				 	printf("Chave = %d\n", aux->dadoSetor.chave);
 				 	printf("Descricao = %s\n\n", aux->dadoSetor.descricao);
@@ -50,6 +56,16 @@ int hashing(int chave){
 	return (chave % MAX);
 }
 
+void updateDescricaoSetor(TLista* L, int codigo, char* novaDescricao){
+	int i;
+	Tno aux;
+	for(i=0; i < L->n; i++){
+		if(aux->dadoSetor.chave == codigo){
+			strcpy(aux->dadoSetor.descricao, novaDescricao);
+			printf("Alteracao Realizada com Sucesso");
+		}
+	}
+}
 
 // ---------------------------- Estrutura AVL ---------------------
 
@@ -175,6 +191,5 @@ Tno* updateNomeResponsavelCliente(TnoCliente *a, char* novoNome, int codigo){
 		else
 			updateNomeResponsavelCliente(a->dir, novoNome, codigo);
 	}
-		
-	
+	return NULL;	
 }

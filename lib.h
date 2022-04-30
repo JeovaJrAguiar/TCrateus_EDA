@@ -18,14 +18,15 @@ typedef struct dadosSetor TdadosSetor;
 typedef struct no* Tno;
 
 typedef struct{
-        Tno dadoSetor[MAX];
+        Tno dadosArray[MAX];
         int n;
 } TLista;
 
 int criar(TLista *L);
-int inserirSetor(TLista *L, int hash, TdadosSetor dadoSetor);
+void inserirSetor(TLista *L, int hash, TdadosSetor dadoSetor);
 void exibir(TLista L);
 int hashing(int chave);
+void updateDescricaoSetor(TLista* L, int codigo, char* novaDescricao);
 
 // ---------------------------- Estrutura AVL ---------------------
 
@@ -38,8 +39,6 @@ typedef struct noCliente{
 	char nomeResponsavel[30];
 	
 	int fator_b;
-	int n;
-	
 	struct noCliente* esq;
 	struct noCliente* dir;
 
@@ -55,5 +54,5 @@ TnoCliente* balanceamento(TnoCliente* a);
 TnoCliente* balanceio_esquerda(TnoCliente *a);
 TnoCliente* balanceio_direita(TnoCliente *a);
 TnoCliente* inserirCliente(TnoCliente* a,  TnoCliente dadoCliente);
-void imprime(TnoCliente* a);
 Tno* updateNomeResponsavelCliente(TnoCliente *a, char* novoNome, int codigo);
+void imprime(TnoCliente* a);
