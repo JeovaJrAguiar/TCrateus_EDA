@@ -9,8 +9,8 @@ int main(void) {
 	do{    
     //Exibir menu
         system("cls");
-        puts("\n\t\t\t\tEDITOR DE LISTAS\n");
-        puts("\t1  - EXIBIR LISTA\n \t2  - INSERIR UM SETOR\n \t0  - SAIR");
+        puts("\n\t\t\t\tTRANSPORTADORA TCRATEUS\n");
+        puts("\t1  - EXIBIR SETORES\n \t2  - INSERIR UM SETOR\n \t0  - SAIR");
         printf("\nINFORME SUA OPCAO:\n");
         scanf("%d", &op);//Escolha da Opção
         
@@ -22,11 +22,12 @@ int main(void) {
 				}
 				
 				case 2:{
-					printf("Informe uma chave: ");
+					printf("Informe uma chave(Identificador): ");
 	                scanf("%d", &dado.chave);
 	                
-	                printf("Informe o nome: ");
-	                scanf("%s", &dado.nome);
+	                printf("Informe uma descrição: ");
+	                fflush(stdin);
+					fgets(dado.descricao, 30, stdin);
 	                
 	                hash = hashing(dado.chave);
 	                inserir(&L,hash, dado);
@@ -40,6 +41,6 @@ int main(void) {
 	getch();
     }while(op!=0);
   
-  system("PAUSE");	
+  //system("PAUSE");	
   return 0;
 }
