@@ -1,3 +1,4 @@
+#include <string.h>
 #include "lib.h"
 
 // ---------------- Estrutura Tabela HASH----------------------
@@ -133,7 +134,7 @@ TnoCliente* inserirCliente(TnoCliente* a, TnoCliente dadoCliente){
 		a->dir = NULL;
 		return a;
 	}
-	else
+	else{
 		if(a->id > dadoCliente.id){
 			a->esq = inserirCliente(a->esq, dadoCliente);
 			a = balanceamento(a);
@@ -142,25 +143,38 @@ TnoCliente* inserirCliente(TnoCliente* a, TnoCliente dadoCliente){
 			a->dir = inserirCliente(a->dir, dadoCliente);
 			a = balanceamento(a);
 		}
+	}
+	return a;
+		
 }
 void imprime(TnoCliente* a){
 	if (a == NULL){
 		return;
 	}
-    printf("Id: %d\n",a->id);
-    printf("Nome do Responsavel: %s\n", a->nomeResponsavel);
-    printf("Endereco: %s\n", a->endereco);
-    printf("razao social: %s\n", a->razaoSocial);
-    printf("Ano de Criacao: %d\n",a->anoCriacao);
-    
+	if(a != NULL){
+		printf("Id: %d\n",a->id);
+	    printf("Nome do Responsavel: %s\n", a->nomeResponsavel);
+	    printf("Endereco: %s\n", a->endereco);
+	    printf("razao social: %s\n", a->razaoSocial);
+	    printf("Ano de Criacao: %d\n",a->anoCriacao);
+	    
+		imprime(a->esq);
+    	imprime(a->dir);
+	} 
+}
  
-    /*if(a->esq != NULL)
-        printf("(E:%d)",a->esq->elemento);
-    if(a->dir != NULL)
-        printf("(D:%d)",a->dir->elemento);
-    printf("\n");
- 
-    imprime(a->esq);
-    imprime(a->dir);
-    */
+
+Tno* updateNomeResponsavelCliente(TnoCliente *a, char* novoNome, int codigo){
+	if(a != NULL){
+		if(codigo == a->id){
+			strcpy(a->nomeResponsavel, novoNome);
+			printf("Alteracao Realizada com Sucesso");
+		}
+		else if(codigo < a->id)
+			updateNomeResponsavelCliente(a->esq, novoNome, codigo);
+		else
+			updateNomeResponsavelCliente(a->dir, novoNome, codigo);
+	}
+		
+	
 }

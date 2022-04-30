@@ -1,7 +1,8 @@
 #include "lib.h"
 
 int main(void) {
-	int op;
+	int op, codigo;
+	char novoNome[30];
 	TnoCliente dadoCliente;
 	TnoCliente *dadosCliente = NULL;
 	TLista L;
@@ -12,7 +13,7 @@ int main(void) {
     //Exibir menu
         system("cls");
         puts("\n\t\t\t\tTRANSPORTADORA TCRATEUS\n");
-        puts("\t1  - EXIBIR SETORES\n \t2  - INSERIR UM SETOR\n \t3  - INSERIR CLIENTES\n \t0  - SAIR");
+        puts("\t1  - EXIBIR SETORES\n \t2  - INSERIR UM SETOR\n \t3  - INSERIR CLIENTES\n \t4  - EXIBIR CLIENTES\n \t5  - ALTERAR NOME DO RESPONSAVEL(CLIENTE)\n \t0  - SAIR");
         printf("\nINFORME SUA OPCAO:\n");
         scanf("%d", &op);//Escolha da Opção
         
@@ -58,8 +59,19 @@ int main(void) {
 					dadosCliente = inserirCliente(dadosCliente, dadoCliente);	
 					imprime(dadosCliente);
 					
-					
-					
+					break;
+				}
+				case 4:{
+					imprime(dadosCliente);
+					break;
+				}
+				case 5:{
+					printf("Digite o Codigo do Cliente: ");
+					scanf("%d", &codigo);
+					printf("Digite o novo nome do responsavel: ");
+					fflush(stdin);
+					fgets(novoNome, 30, stdin);
+					updateNomeResponsavelCliente(dadosCliente, novoNome, codigo );
 					break;
 				}
         	// Outra opção nao oferecida

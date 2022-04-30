@@ -38,11 +38,14 @@ typedef struct noCliente{
 	char nomeResponsavel[30];
 	
 	int fator_b;
+	int n;
 	
-	struct no* esq;
-	struct no* dir;
+	struct noCliente* esq;
+	struct noCliente* dir;
 
 }TnoCliente;
+
+
 //void menu();
 int altura_AVL(TnoCliente *a);
 int calcula_FB(TnoCliente *a);
@@ -53,3 +56,4 @@ TnoCliente* balanceio_esquerda(TnoCliente *a);
 TnoCliente* balanceio_direita(TnoCliente *a);
 TnoCliente* inserirCliente(TnoCliente* a,  TnoCliente dadoCliente);
 void imprime(TnoCliente* a);
+Tno* updateNomeResponsavelCliente(TnoCliente *a, char* novoNome, int codigo);
