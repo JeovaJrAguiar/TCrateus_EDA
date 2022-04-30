@@ -4,22 +4,22 @@
 int criar(TLista *L){
 	int i=0;
 	for(i=0;i<MAX;i++)
-		L->dado[i]= NULL;
+		L->dadoSetor[i]= NULL;
 	L->n = 0;
 	return 1;	
 }
 
-int inserir(TLista *L, int hash, Tdado dado){
+int inserir(TLista *L, int hash, TdadosSetor dadoSetor){
 	Tno novo;
 	novo = (Tno*) malloc(sizeof(Tno));
-	novo->dado = dado;
-	if(L->dado[hash]==NULL){
-		L->dado[hash] = novo;
+	novo->dadoSetor = dadoSetor;
+	if(L->dadoSetor[hash]==NULL){
+		L->dadoSetor[hash] = novo;
 		novo->proximo = NULL;
 	}
 	else{
-		novo->proximo = L->dado[hash];
-		L->dado[hash] = novo;
+		novo->proximo = L->dadoSetor[hash];
+		L->dadoSetor[hash] = novo;
 	}
 	L->n+=1;
 	return 1;
@@ -30,12 +30,12 @@ void exibir(TLista L){
 	Tno aux;
 	if(L.n!=0){
 		for(i=0;i<MAX;i++){
-			if(L.dado[i] != NULL){
+			if(L.dadoSetor[i] != NULL){
 				printf("---------indice %d---------\n", i);
-				 aux = 	L.dado[i];
+				 aux = 	L.dadoSetor[i];
 				 while(aux !=NULL){
-				 	printf("Chave = %d\n", aux->dado.chave);
-				 	printf("Descricao = %s\n\n", aux->dado.descricao);
+				 	printf("Chave = %d\n", aux->dadoSetor.chave);
+				 	printf("Descricao = %s\n\n", aux->dadoSetor.descricao);
 				 	aux = aux->proximo;
 				 }
 			}
@@ -51,7 +51,7 @@ int hashing(int chave){
 
 
 // ---------------------------- Estrutura AVL ---------------------
-
+/*
 int altura_AVL(Tno *a){
 	int alt_esq=0, alt_dir=0;
 	if(a==NULL)
@@ -117,4 +117,4 @@ Tno * balanceio_direita(Tno *a){
 		}
 		else 
 			return a;
-}
+} */

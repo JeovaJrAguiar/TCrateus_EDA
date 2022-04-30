@@ -3,7 +3,7 @@
 int main(void) {
 	int op;
 	TLista L;
-	Tdado dado;
+	TdadosSetor dadoSetor;
 	criar(&L);
 	int hash;
 	do{    
@@ -23,14 +23,14 @@ int main(void) {
 				
 				case 2:{
 					printf("Informe uma chave(Identificador): ");
-	                scanf("%d", &dado.chave);
+	                scanf("%d", &dadoSetor.chave);
 	                
-	                printf("Informe uma descrição: ");
+	                printf("Informe uma descricao: ");
 	                fflush(stdin);
-					fgets(dado.descricao, 30, stdin);
+					fgets(dadoSetor.descricao, 30, stdin);
 	                
-	                hash = hashing(dado.chave);
-	                inserir(&L,hash, dado);
+	                hash = hashing(dadoSetor.chave);
+	                inserir(&L,hash, dadoSetor);
 					break;
 				}
         	// Outra opção nao oferecida

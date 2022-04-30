@@ -3,33 +3,33 @@
 
 // ---------------- Estrutura Tabela HASH----------------------
 #define MAX 17
-struct dado{
+struct dadosSetor{
 	int chave;
 	char descricao[30];
 };
 
-typedef struct dado Tdado;
+typedef struct dadosSetor TdadosSetor;
 
  struct no{
-        Tdado dado;
+        TdadosSetor dadoSetor;
         struct no *proximo;
 };
 
 typedef struct no* Tno;
 
 typedef struct{
-        Tno dado[MAX];
+        Tno dadoSetor[MAX];
         int n;
 } TLista;
 
 int criar(TLista *L);
-int inserir(TLista *L, int hash, Tdado dado);
+int inserir(TLista *L, int hash, TdadosSetor dadoSetor);
 void exibir(TLista L);
 int hashing(int chave);
 
 // ---------------------------- Estrutura AVL ---------------------
 
-typedef struct no{
+typedef struct noCliente{
 	int id;
 	int anoCriacao;
 	int numServicosPrestados;
