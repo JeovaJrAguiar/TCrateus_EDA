@@ -2,6 +2,8 @@
 
 int main(void) {
 	int op;
+	TnoCliente dadoCliente;
+	TnoCliente *dadosCliente = NULL;
 	TLista L;
 	TdadosSetor dadoSetor;
 	criar(&L);
@@ -10,7 +12,7 @@ int main(void) {
     //Exibir menu
         system("cls");
         puts("\n\t\t\t\tTRANSPORTADORA TCRATEUS\n");
-        puts("\t1  - EXIBIR SETORES\n \t2  - INSERIR UM SETOR\n \t0  - SAIR");
+        puts("\t1  - EXIBIR SETORES\n \t2  - INSERIR UM SETOR\n \t3  - INSERIR CLIENTES\n \t0  - SAIR");
         printf("\nINFORME SUA OPCAO:\n");
         scanf("%d", &op);//Escolha da Opção
         
@@ -22,7 +24,7 @@ int main(void) {
 				}
 				
 				case 2:{
-					printf("Informe uma chave(Identificador): ");
+					printf("Informe um identificador(Codigo): ");
 	                scanf("%d", &dadoSetor.chave);
 	                
 	                printf("Informe uma descricao: ");
@@ -30,7 +32,34 @@ int main(void) {
 					fgets(dadoSetor.descricao, 30, stdin);
 	                
 	                hash = hashing(dadoSetor.chave);
-	                inserir(&L,hash, dadoSetor);
+	                inserirSetor(&L,hash, dadoSetor);
+					break;
+				}
+				
+				case 3:{
+					printf("Informe um identificador(Codigo): ");
+					scanf("%d", &dadoCliente.id);
+					
+					printf("Informe a Razao Social: ");
+					fflush(stdin);
+					fgets(dadoCliente.razaoSocial, 30, stdin);
+					
+					printf("Informe o Enderaco: ");
+					fflush(stdin);
+					fgets(dadoCliente.endereco, 30, stdin);
+					
+					printf("Informe a Nome do Responsavel: ");
+					fflush(stdin);
+					fgets(dadoCliente.nomeResponsavel, 30, stdin);
+					
+					printf("Informe o Ano de Criacao: ");
+					scanf("%d", &dadoCliente.anoCriacao);
+					
+					dadosCliente = inserirCliente(dadosCliente, dadoCliente);	
+					imprime(dadosCliente);
+					
+					
+					
 					break;
 				}
         	// Outra opção nao oferecida

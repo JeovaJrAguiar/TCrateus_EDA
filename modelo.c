@@ -9,7 +9,7 @@ int criar(TLista *L){
 	return 1;	
 }
 
-int inserir(TLista *L, int hash, TdadosSetor dadoSetor){
+int inserirSetor(TLista *L, int hash, TdadosSetor dadoSetor){
 	Tno novo;
 	novo = (Tno*) malloc(sizeof(Tno));
 	novo->dadoSetor = dadoSetor;
@@ -51,8 +51,8 @@ int hashing(int chave){
 
 
 // ---------------------------- Estrutura AVL ---------------------
-/*
-int altura_AVL(Tno *a){
+
+int altura_AVL(TnoCliente *a){
 	int alt_esq=0, alt_dir=0;
 	if(a==NULL)
 		return 0;
@@ -65,26 +65,26 @@ int altura_AVL(Tno *a){
 			return (1+alt_dir);
 	}
 }
-int calcula_FB(Tno *a){
+int calcula_FB(TnoCliente *a){
 	return (altura_AVL(a->esq) - altura_AVL(a->dir));
 }
-Tno* rotacao_simples_esquerda(Tno *a){
-	Tno *aux;
+TnoCliente* rotacao_simples_esquerda(TnoCliente *a){
+	TnoCliente *aux;
 	aux = a->dir;
 	a->dir = aux->esq;
 	aux->esq = a;
 	a = aux;
 	return a;
 }
-Tno* rotacao_simples_direita(Tno *a){
-	Tno *aux;
+TnoCliente* rotacao_simples_direita(TnoCliente *a){
+	TnoCliente *aux;
   	aux = a->esq;
   	a->esq = aux->dir;
   	aux->dir = a;
   	a = aux;
   	return a;
 }
-Tno* balanceamento(Tno* a){
+TnoCliente* balanceamento(TnoCliente* a){
 	int fator = calcula_FB(a);
 	if(fator > 1)
 		return balanceio_esquerda(a);
@@ -93,7 +93,7 @@ Tno* balanceamento(Tno* a){
 			return balanceio_direita(a);
 	return a;
 }
-Tno * balanceio_esquerda(Tno *a){
+TnoCliente* balanceio_esquerda(TnoCliente *a){
 	int fator = calcula_FB(a->esq);
 	if(fator>0)
 		return rotacao_simples_direita(a);
@@ -105,7 +105,7 @@ Tno * balanceio_esquerda(Tno *a){
 		}
 	 	else return a;
 }
-Tno * balanceio_direita(Tno *a){
+TnoCliente * balanceio_direita(TnoCliente *a){
 	int fator = calcula_FB(a->dir);
 	if(fator <0)
 		return rotacao_simples_esquerda(a);
@@ -117,4 +117,50 @@ Tno * balanceio_direita(Tno *a){
 		}
 		else 
 			return a;
-} */
+} 
+
+TnoCliente* inserirCliente(TnoCliente* a, TnoCliente dadoCliente){
+	if(a == NULL){
+		a = (TnoCliente*) malloc(sizeof(TnoCliente));
+		a->id = dadoCliente.id;
+		a->anoCriacao = dadoCliente.anoCriacao;
+		a->numServicosPrestados = dadoCliente.numServicosPrestados;
+		strcpy(a->razaoSocial, dadoCliente.razaoSocial);
+		strcpy(a->endereco, dadoCliente.endereco);
+		strcpy(a->nomeResponsavel, dadoCliente.nomeResponsavel);
+		
+		a->esq = NULL;
+		a->dir = NULL;
+		return a;
+	}
+	else
+		if(a->id > dadoCliente.id){
+			a->esq = inserirCliente(a->esq, dadoCliente);
+			a = balanceamento(a);
+		}
+		else{
+			a->dir = inserirCliente(a->dir, dadoCliente);
+			a = balanceamento(a);
+		}
+}
+void imprime(TnoCliente* a){
+	if (a == NULL){
+		return;
+	}
+    printf("Id: %d\n",a->id);
+    printf("Nome do Responsavel: %s\n", a->nomeResponsavel);
+    printf("Endereco: %s\n", a->endereco);
+    printf("razao social: %s\n", a->razaoSocial);
+    printf("Ano de Criacao: %d\n",a->anoCriacao);
+    
+ 
+    /*if(a->esq != NULL)
+        printf("(E:%d)",a->esq->elemento);
+    if(a->dir != NULL)
+        printf("(D:%d)",a->dir->elemento);
+    printf("\n");
+ 
+    imprime(a->esq);
+    imprime(a->dir);
+    */
+}

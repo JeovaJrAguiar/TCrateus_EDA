@@ -23,7 +23,7 @@ typedef struct{
 } TLista;
 
 int criar(TLista *L);
-int inserir(TLista *L, int hash, TdadosSetor dadoSetor);
+int inserirSetor(TLista *L, int hash, TdadosSetor dadoSetor);
 void exibir(TLista L);
 int hashing(int chave);
 
@@ -44,12 +44,12 @@ typedef struct noCliente{
 
 }TnoCliente;
 //void menu();
-int altura_AVL(Tno *a);
-int calcula_FB(Tno *a);
-Tno* rotacao_simples_esquerda(Tno *a);
-Tno* rotacao_simples_direita(Tno *a);
-Tno* balanceamento(Tno* a);
-Tno * balanceio_esquerda(Tno *a);
-Tno * balanceio_direita(Tno *a);
-//Tno* inserir(Tno* a, int elemento);
-//void imprime(Tno* a);
+int altura_AVL(TnoCliente *a);
+int calcula_FB(TnoCliente *a);
+TnoCliente* rotacao_simples_esquerda(TnoCliente *a);
+TnoCliente* rotacao_simples_direita(TnoCliente *a);
+TnoCliente* balanceamento(TnoCliente* a);
+TnoCliente* balanceio_esquerda(TnoCliente *a);
+TnoCliente* balanceio_direita(TnoCliente *a);
+TnoCliente* inserirCliente(TnoCliente* a,  TnoCliente dadoCliente);
+void imprime(TnoCliente* a);
