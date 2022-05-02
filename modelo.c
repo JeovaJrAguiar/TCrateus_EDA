@@ -5,21 +5,21 @@
 // ---------------- Estrutura Tabela HASH----------------------
 int criar(TLista *L){
 	int i=0;
+	
 	for(i=0;i<MAX;i++)
 		L->dadosArray[i]= NULL;
+	
 	L->n = 0;
 	return 1;	
 }
 
 void inserirSetor(TLista *L, int hash, TdadosSetor dadoSetor){
-	printf("oi\n");
 	Tno novo;
+	
 	novo = (Tno*) malloc(sizeof(Tno));
-	printf("oi2\n");
 	novo->dadoSetor = dadoSetor;
-	printf("oi3\n");
+	
 	if(L->dadosArray[hash]==NULL){
-		printf("oi4\n");
 		L->dadosArray[hash] = novo;
 		novo->proximo = NULL;
 	}
@@ -27,9 +27,8 @@ void inserirSetor(TLista *L, int hash, TdadosSetor dadoSetor){
 		novo->proximo = L->dadosArray[hash];
 		L->dadosArray[hash] = novo;
 	}
-	printf("oi5\n");
-	L->n+=1;
 	
+	L->n+=1;
 }
 
 void exibir(TLista L){
@@ -57,14 +56,26 @@ int hashing(int chave){
 }
 
 void updateDescricaoSetor(TLista* L, int codigo, char* novaDescricao){
-	int i;
-	Tno aux;
-	for(i=0; i < L->n; i++){
-		if(aux->dadoSetor.chave == codigo){
-			strcpy(aux->dadoSetor.descricao, novaDescricao);
-			printf("Alteracao Realizada com Sucesso");
-		}
+	int codAux = hashing(codigo);
+	
+	if(TLista->dadosArray[codAux] != NULL){
+	    printf("Categoria nao existe na tabela!");
+	    return;
 	}
+	
+	if(TLista->dadosArray[codAux]->dadoSetor->chave == codigo){
+	        TLista->dadosArray[codAux]->dadoSetor->descricao == novaDescricao;
+	        printf("Descricao atualizada!");
+	}else{
+	    Tno noAux = TLista->dadosArray[codAux]->proximo;
+	    while(noAux->dadoSetor->chave != codigo){
+	        noAux = noAux->proximo;
+	        if(noAux = NULL){
+    	        return;
+	        }
+	    }
+	    noAux->dadoSetor->descricao == novaDescricao;    
+	 }
 }
 
 // ---------------------------- Estrutura AVL ---------------------
@@ -136,7 +147,12 @@ TnoCliente * balanceio_direita(TnoCliente *a){
 			return a;
 } 
 
-TnoCliente* inserirCliente(TnoCliente* a, TnoCliente dadoCliente){
+TnoCliente* inserirCliente(TLista* L, TnoCliente* a, TnoCliente dadoCliente){
+    if(L == NULL){
+        printf("Lista inexistente!");
+        return;
+    }
+    
 	if(a == NULL){
 		a = (TnoCliente*) malloc(sizeof(TnoCliente));
 		a->id = dadoCliente.id;

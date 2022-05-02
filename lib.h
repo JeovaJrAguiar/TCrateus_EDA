@@ -13,6 +13,7 @@ typedef struct dadosSetor TdadosSetor;
  struct no{
         TdadosSetor dadoSetor;
         struct no *proximo;
+        TnoCliente *cliente;
 };
 
 typedef struct no* Tno;
@@ -54,5 +55,5 @@ TnoCliente* balanceamento(TnoCliente* a);
 TnoCliente* balanceio_esquerda(TnoCliente *a);
 TnoCliente* balanceio_direita(TnoCliente *a);
 TnoCliente* inserirCliente(TnoCliente* a,  TnoCliente dadoCliente);
-Tno* updateNomeResponsavelCliente(TnoCliente *a, char* novoNome, int codigo);
+Tno* updateNomeResponsavelCliente(TLista* L, TnoCliente *a, char* novoNome, int codigo);
 void imprime(TnoCliente* a);
